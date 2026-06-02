@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amaraith Reserve - Sint Maarten</title>
+    <!-- Use a Google Font with a serif and sans-serif for the correct feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General resets */
+        body {
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #000;
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3, .brand-name {
+            font-family: 'Playfair Display', serif;
+            color: #CBA266; /* Muted Gold from Logo */
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Container for standard width content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Top Navigation */
+        .header-nav {
+            background-color: #000;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .header-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: inline-flex;
+            gap: 30px;
+        }
+
+        .header-nav li a {
+            color: #CBA266;
+            font-weight: 300;
+            font-size: 1.1em;
+            text-transform: capitalize;
+        }
+
+        .header-nav .try-options {
+            border: 1px solid #CBA266;
+            padding: 8px 15px;
+            color: #CBA266;
+        }
+
+        /* Hero / Video Section */
+        .hero-video {
+            position: relative;
+            height: 80vh; /* Adjust as needed */
+            overflow: hidden;
+        }
+
+        .hero-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Option Selector Overlay */
+        .option-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 350px;
+            background-color: rgba(0, 0, 0, 0.9);
+            border: 1px solid #333;
+            padding: 20px;
+            border-radius: 5px;
+            z-index: 10;
+        }
+
+        .option-selector h3 {
+            margin: 0 0 15px;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .option-group {
+            margin-bottom: 20px;
+        }
+
+        .option-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #CBA266;
+            text-transform: capitalize;
+        }
+
+        .option-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .option-button {
+            border: 1px solid #444;
+            padding: 8px 12px;
+            color: #ddd;
+            background: none;
+            cursor: pointer;
+            text-transform: capitalize;
+        }
+
+        .option-button.active {
+            background-color: #CBA266;
+            color: #000;
+            border-color: #CBA266;
+        }
+
+        .group-size-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        /* Central Logo Section */
+        .central-logo {
+            padding: 50px 0;
+            text-align: center;
+            background-color: #000;
+        }
+
+        .logo-details {
+            margin: 0 auto;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .logo-details h1 {
+            font-size: 3em;
+            margin: 10px 0;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .logo-details h2 {
+            font-size: 1.2em;
+            color: #00778C; /* Teal color */
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Villa Cards Section */
+        .villa-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding-bottom: 50px;
+        }
+
+        .villa-card {
+            background-color: #111;
+            border: 1px solid #222;
+            border-radius: 5px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .villa-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .villa-info {
+            padding: 20px;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .villa-info h3 {
+            font-size: 1.5em;
+            margin: 0 0 10px;
+        }
+
+        .villa-info p {
+            color: #CBA266;
+            margin: 0 0 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .villa-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .action-button {
+            border: 1px solid #CBA266;
+            color: #CBA266;
+            padding: 8px 15px;
+            background: none;
+            cursor: pointer;
+            text-transform: capitalize;
+            flex: 1;
+        }
+
+        .action-button.primary {
+            background-color: #CBA266;
+            color: #000;
+        }
+
+        /* Bottom Footer / Map Section */
+        .footer-map-section {
+            background-color: #111;
+            padding: 50px 0;
+            border-top: 1px solid #222;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr 1fr;
+            gap: 40px;
+        }
+
+        /* Brand Column */
+        .footer-brand {
+            text-align: center;
+        }
+
+        .footer-brand h1 {
+            font-size: 2em;
+            margin: 10px 0;
+            text-transform: uppercase;
+        }
+
+        .footer-brand h2 {
+            font-size: 1em;
+            color: #00778C;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .footer-brand p {
+            font-size: 1.2em;
+            color: #fff;
+            margin: 0 0 10px;
+        }
+
+        .footer-brand a {
+            color: #ddd;
+        }
+
+        /* Map Column */
+        .map-section {
+            position: relative;
+            background-color: #eee;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .map-overlay {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .map-controls {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        /* Social Media Column */
+        .social-media-feed {
+            background-color: #fff;
+            color: #333;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .feed-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .feed-header-text {
+            flex-grow: 1;
+        }
+
+        .feed-header h4 {
+            margin: 0;
+            color: #CBA266;
+        }
+
+        .feed-header p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        .feed-post p {
+            margin: 0 0 10px;
+            color: #333;
+        }
+
+        .feed-post a {
+            color: #00778C;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="header-nav">
+        <nav>
+            <ul>
+                <li><a href="#">The Reserve</a></li>
+                <li><a href="#">Villas</a></li>
+                <li><a href="#">Experiences</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#" class="try-options">Try Options</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- Hero Video Section with Overlay Selector -->
+        <section class="hero-video">
+            <video autoplay loop muted>
+                <source src="path/to/your/luxury-villa-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            
+            <!-- Floating Option Selector -->
+            <aside class="option-selector">
+                <h3>Option Selector</h3>
+                <div class="option-group">
+                    <label>Select Villa Style</label>
+                    <div class="option-buttons">
+                        <button class="option-button active">Beachfront</button>
+                        <button class="option-button">Hillside</button>
+                        <button class="option-button">Ultra-Private</button>
+                    </div>
+                </div>
+                <div class="option-group">
+                    <label>Change Experience Focus</label>
+                    <div class="option-buttons">
+                        <button class="option-button active">Family</button>
+                        <button class="option-button">Romantic</button>
+                        <button class="option-button">Adventure</button>
+                    </div>
+                </div>
+                <div class="option-group">
+                    <label>Filter By Group Size</label>
+                    <div class="group-size-icons">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 13a1.5 1.5 0 011.5 1.5v6A1.5 1.5 0 0116.5 22h-9A1.5 1.5 0 016 20.5v-6A1.5 1.5 0 017.5 13h1v-1.5c0-1.93 1.57-3.5 3.5-3.5s3.5 1.57 3.5 3.5v1.5h1zM14 11.5c0-1.1-.9-2-2-2s-2 .9-2 2V13h4v-1.5zM12 2a4 4 0 110 8 4 4 0 010-8zm0 10c2.76 0 5 2.24 5 5v3c0 .55-.45 1-1 1h-8c-.55 0-1-.45-1-1v-3c0-2.76 2.24-5 5-5z"></path></svg>
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a4 4 0 110 8 4 4 0 010-8zm-1.12 11.02c.08-.01.17-.02.25-.02H12a5 5 0 014.28 2.4A1.9 1.9 0 0017.5 15c.83 0 1.5.67 1.5 1.5v3a1.5 1.5 0 01-1.5 1.5h-11A1.5 1.5 0 015 19.5v-3C5 15.67 5.67 15 6.5 15h.62c.4 0 .78.11 1.11.3 1.12.63 2.1 1 3.1 1.02zM12 11.5c-.83 0-1.5-.67-1.5-1.5S11.17 8.5 12 8.5 13.5 9.17 13.5 10s-.67 1.5-1.5 1.5z"></path></svg>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <!-- Central Logo Section -->
+        <section class="central-logo container">
+            <div class="logo-details">
+                <svg width="100" height="100" viewBox="0 0 351 183" fill="none"><path d="M78.6816 112.56H99.1616V108.24H78.6816V112.56Z" fill="#CBA266"></path><path d="M110.12 112.56H130.6V108.24H110.12V112.56Z" fill="#CBA266"></path><path d="M141.56 112.56H162.04V108.24H141.56V112.56Z" fill="#CBA266"></path><path d="M172.99 112.56H193.47V108.24H172.99V112.56Z" fill="#CBA266"></path><path d="M204.43 112.56H224.91V108.24H204.43V112.56Z" fill="#CBA266"></path><path d="M235.87 112.56H256.35V108.24H235.87V112.56Z" fill="#CBA266"></path><path d="M267.31 112.56H287.79V108.24H267.31V112.56Z" fill="#CBA266"></path><path d="M298.75 112.56H319.23V108.24H298.75V112.56Z" fill="#CBA266"></path><path d="M14.0016 112.56H34.4816V108.24H14.0016V112.56Z" fill="#CBA266"></path><path d="M45.4416 112.56H65.9216V108.24H45.4416V112.56Z" fill="#CBA266"></path><path d="M330.19 112.56H350.67V108.24H330.19V112.56Z" fill="#CBA266"></path><path d="M182.5 137.5L183.16 138.16L182.5 138.83L181.84 138.16L182.5 137.5ZM182.5 134.18L180.52 136.17L181.18 136.83L182.5 135.51L183.82 136.83L184.48 136.17L182.5 134.18Z" fill="#CBA266"></path><path d="M110.12 112.56H130.6V108.24H110.12V112.56Z" fill="#CBA266"></path><path d="M235.87 112.56H256.35V108.24H235.87V112.56Z" fill="#CBA266"></path><path d="M182.5 137.5L183.16 138.16L182.5 138.83L181.84 138.16L182.5 137.5ZM182.5 134.18L180.52 136.17L181.18 136.83L182.5 135.51L183.82 136.83L184.48 136.17L182.5 134.18Z" fill="#CBA266"></path><path d="M182.5 137.5L183.16 138.16L182.5 138.83L181.84 138.16L182.5 137.5ZM182.5 134.18L180.52 136.17L181.18 136.83L182.5 135.51L183.82 136.83L184.48 136.17L182.5 134.18Z" fill="#CBA266"></path><path d="M182.5 137.5L183.16 138.16L182.5 138.83L181.84 138.16L182.5 137.5ZM182.5 134.18L180.52 136.17L181.18 136.83L182.5 135.51L183.82 136.83L184.48 136.17L182.5 134.18Z" fill="#CBA266"></path><path d="M22.0016 112.56H34.4816V108.24H22.0016V112.56Z" fill="#CBA266"></path><path d="M45.4416 112.56H65.9216V108.24H45.4416V112.56Z" fill="#CBA266"></path><path d="M330.19 112.56H350.67V108.24H330.19V112.56Z" fill="#CBA266"></path><path d="M182.5 137.5L183.16 138.16L182.5 138.83L181.84 138.16L182.5 137.5ZM182.5 134.18L180.52 136.17L181.18 136.83L182.5 135.51L183.82 136.83L184.48 136.17L182.5 134.18Z" fill="#CBA266"></path><path d="M182.5 137.5L183.16 138.16L182.5 138.83L181.84 138.16L182.5 137.5ZM182.5 134.18L180.52 136.17L181.18 136.83L182.5 135.51L183.82 136.83L184.48 136.17L182.5 134.18Z" fill="#CBA266"></path><path d="M182.5 137.5L183.16 138.16L182.5 138.83L181.84 138.16L182.5 137.5ZM182.5 134.18L180.52 136.17L181.18 136.83L182.5 135.51L183.82 136.83L184.48 136.17L182.5 134.18Z" fill="#CBA266"></path><path d="M182.5 137.5L183.16 138.16L182.5 138.83L181.84 138.16L182.5 137.5ZM182.5 134.18L180.52 136.17L181.18 136.83L182.5 135.51L183.82 136.83L184.48 136.17L182.5 134.18Z" fill="#CBA266"></path></svg>
+                <h1 class="brand-name">AMARAITH</h1>
+                <h2>RESERVE</h2>
+                <h2 style="color: #00778C;">SINT MAARTEN</h2>
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="#CBA266"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg>
+            </div>
+        </section>
+
+        <!-- Villa Grid Section -->
+        <section class="villa-grid container">
+            <!-- Villa Card 1 -->
+            <article class="villa-card">
+                <img src="path/to/villa-azur.jpg" alt="Villa Azur - Beachfront">
+                <div class="villa-info">
+                    <h3>Villa Azur</h3>
+                    <p>Beachfront</p>
+                    <div class="villa-actions">
+                        <button class="action-button primary">View Gallery</button>
+                        <button class="action-button">Check Availability</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Villa Card 2 -->
+            <article class="villa-card">
+                <img src="path/to/serenity-hill.jpg" alt="Serenity Hill - Hillside">
+                <div class="villa-info">
+                    <h3>Serenity Hill</h3>
+                    <p>Hillside</p>
+                    <div class="villa-actions">
+                        <button class="action-button primary">View Gallery</button>
+                        <button class="action-button">Check Availability</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Villa Card 3 -->
+            <article class="villa-card">
+                <img src="path/to/pelican-point.jpg" alt="Pelican Point - Romantic">
+                <div class="villa-info">
+                    <h3>Pelican Point</h3>
+                    <p>Romantic</p>
+                    <div class="villa-actions">
+                        <button class="action-button primary">View Gallery</button>
+                        <button class="action-button">Check Availability</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Villa Card 4 -->
+            <article class="villa-card">
+                <img src="path/to/oceanus-estate.jpg" alt="Oceanus Estate - Large Group">
+                <div class="villa-info">
+                    <h3>Oceanus Estate</h3>
+                    <p>Large Group</p>
+                    <div class="villa-actions">
+                        <button class="action-button primary">View Gallery</button>
+                        <button class="action-button">Check Availability</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Footer Map and Social Feed Section -->
+        <section class="footer-map-section">
+            <div class="container footer-grid">
+                <!-- Column 1: Brand & Contact -->
+                <div class="footer-brand">
+                    <svg width="60" height="60" viewBox="0 0 351 183" fill="none"><path d="M78.6816 112.56H99.1616V108.24H78.6816V112.56Z" fill="#CBA266"></path><path d="M110.12 112.56H130.6V108.24H110.12V112.56Z" fill="#CBA266"></path><path d="M141.56 112.56H162.04V108.24H141.56V112.56Z" fill="#CBA266"></path><path d="M172.99 112.56H193.47V108.24H172.99V112.56Z" fill="#CBA266"></path><path d="M204.43 112.56H224.91V108.24H204.43V112.56Z" fill="#CBA266"></path><path d="M235.87 112.56H256.35V108.24H235.87V112.56Z" fill="#CBA266"></path><path d="M267.31 112.56H287.79V108.24H267.31V112.56Z" fill="#CBA266"></path><path d="M298.75 112.56H319.23V108.24H298.75V112.56Z" fill="#CBA266"></path><path d="M14.0016 112.56H34.4816V108.24H14.0016V112.56Z" fill="#CBA266"></path><path d="M45.4416 112.56H65.9216V108.24H45.4416V112.56Z" fill="#CBA266"></path><path d="M330.19 112.56H350.67V108.24H330.19V112.56Z" fill="#CBA266"></path></svg>
+                    <h1>AMARAITH</h1>
+                    <h2>RESERVE</h2>
+                    <h2 style="color: #00778C; font-size: 0.8em; margin-bottom: 10px;">SINT MAARTEN</h2>
+                    <p>+1 (387) 336-3300</p>
+                    <a href="mailto:info@amaraith.com">www.amaraithoo.com</a>
+                </div>
+
+                <!-- Column 2: Map -->
+                <div class="map-section">
+                    <div class="map-overlay">
+                        Map Placeholder
+                        <p>Simulating Google Maps view</p>
+                    </div>
+                    <div class="map-controls">
+                        <button style="border:1px solid #333; color:#333; background: #fff;">Map</button>
+                        <button style="border:1px solid #333; color:#333; background: #fff;">Satellite</button>
+                    </div>
+                </div>
+
+                <!-- Column 3: Social Media Feed -->
+                <div class="social-media-feed">
+                    <div class="feed-header">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="#CBA266"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg>
+                        <div class="feed-header-text">
+                            <h4>Amaraith Reserve</h4>
+                            <p>@AmaraithReserve</p>
+                        </div>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#3b5998"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                    </div>
+                    <div class="feed-post">
+                        <p>Amaraith Reserve is wild our occusionment mentanee in Sint Maarten 🌴</p>
+                        <a href="#">#AmaraithReserve SintMaarten</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
