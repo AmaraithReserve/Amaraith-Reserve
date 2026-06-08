@@ -1,0 +1,535 @@
+/* General resets */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+h1, h2, h3, .brand-name {
+    font-family: 'Playfair Display', serif;
+    color: #CBA266; /* Muted Gold from Logo */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #00778C;
+}
+
+/* Container for standard width content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Top Navigation */
+.header-nav {
+    background-color: #000;
+    padding: 15px 0;
+    text-align: center;
+    border-bottom: 1px solid #222;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.header-nav li a {
+    color: #CBA266;
+    font-weight: 300;
+    font-size: 1.1em;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+}
+
+.header-nav li a:hover {
+    color: #00778C;
+}
+
+.header-nav .try-options {
+    border: 1px solid #CBA266;
+    padding: 8px 15px;
+    color: #CBA266;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.header-nav .try-options:hover {
+    background-color: #CBA266;
+    color: #000;
+}
+
+/* Hero / Video Section */
+.hero-video {
+    position: relative;
+    height: 80vh;
+    overflow: hidden;
+    background-color: #111;
+}
+
+.hero-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-video img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Option Selector Overlay */
+.option-selector {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 350px;
+    background-color: rgba(0, 0, 0, 0.95);
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 10;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.option-selector h3 {
+    margin: 0 0 15px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.option-group {
+    margin-bottom: 20px;
+}
+
+.option-group label {
+    display: block;
+    margin-bottom: 10px;
+    color: #CBA266;
+    text-transform: capitalize;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.option-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.option-button {
+    border: 1px solid #444;
+    padding: 8px 12px;
+    color: #ddd;
+    background: none;
+    cursor: pointer;
+    text-transform: capitalize;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+}
+
+.option-button:hover {
+    border-color: #CBA266;
+    color: #CBA266;
+}
+
+.option-button.active {
+    background-color: #CBA266;
+    color: #000;
+    border-color: #CBA266;
+}
+
+.group-size-icons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.size-button {
+    background: none;
+    border: 1px solid #444;
+    color: #ddd;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.size-button:hover {
+    border-color: #CBA266;
+    color: #CBA266;
+}
+
+.size-button.active {
+    background-color: #CBA266;
+    color: #000;
+    border-color: #CBA266;
+}
+
+/* Central Logo Section */
+.central-logo {
+    padding: 50px 0;
+    text-align: center;
+    background-color: #000;
+}
+
+.logo-details {
+    margin: 0 auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+.logo-details h1 {
+    font-size: 3em;
+    margin: 10px 0;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.logo-details h2 {
+    font-size: 1.2em;
+    color: #00778C; /* Teal color */
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Villa Cards Section */
+.villa-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding-bottom: 50px;
+}
+
+.villa-card {
+    background-color: #111;
+    border: 1px solid #222;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.villa-card:hover {
+    border-color: #CBA266;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 32px rgba(203, 162, 102, 0.2);
+}
+
+.villa-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.villa-card:hover img {
+    transform: scale(1.05);
+}
+
+.villa-info {
+    padding: 20px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.villa-info h3 {
+    font-size: 1.5em;
+    margin: 0 0 10px;
+}
+
+.villa-info p {
+    color: #CBA266;
+    margin: 0 0 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9em;
+    flex-grow: 1;
+}
+
+.villa-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.action-button {
+    border: 1px solid #CBA266;
+    color: #CBA266;
+    padding: 8px 15px;
+    background: none;
+    cursor: pointer;
+    text-transform: capitalize;
+    flex: 1;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.action-button:hover {
+    background-color: #CBA266;
+    color: #000;
+}
+
+.action-button.primary {
+    background-color: #CBA266;
+    color: #000;
+}
+
+.action-button.primary:hover {
+    background-color: #00778C;
+    border-color: #00778C;
+}
+
+/* Bottom Footer / Map Section */
+.footer-map-section {
+    background-color: #111;
+    padding: 50px 0;
+    border-top: 1px solid #222;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 40px;
+}
+
+/* Brand Column */
+.footer-brand {
+    text-align: center;
+}
+
+.footer-brand h1 {
+    font-size: 2em;
+    margin: 10px 0;
+    text-transform: uppercase;
+}
+
+.footer-brand h2 {
+    font-size: 1em;
+    color: #00778C;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.footer-brand p {
+    font-size: 1.2em;
+    color: #fff;
+    margin: 0 0 10px;
+}
+
+.footer-brand a {
+    color: #CBA266;
+    transition: color 0.3s ease;
+}
+
+.footer-brand a:hover {
+    color: #00778C;
+}
+
+/* Map Column */
+.map-section {
+    position: relative;
+    background-color: #eee;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 5px;
+    overflow: hidden;
+    min-height: 300px;
+}
+
+/* Social Media Column */
+.social-media-feed {
+    background-color: #fff;
+    color: #333;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.feed-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.feed-header-text {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.feed-header h4 {
+    margin: 0;
+    color: #CBA266;
+    font-size: 1.1em;
+}
+
+.feed-header p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #888;
+}
+
+.feed-post p {
+    margin: 0 0 10px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.feed-post a {
+    color: #00778C;
+    font-weight: 600;
+}
+
+.feed-post a:hover {
+    color: #CBA266;
+}
+
+/* Footer */
+.footer {
+    background-color: #000;
+    border-top: 1px solid #222;
+    padding: 20px 0;
+    text-align: center;
+    color: #888;
+}
+
+.footer a {
+    color: #CBA266;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #00778C;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .logo-details h1 {
+        font-size: 2.5em;
+    }
+    
+    .header-nav ul {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-nav ul {
+        gap: 10px;
+        font-size: 0.9em;
+    }
+    
+    .header-nav li a {
+        font-size: 0.95em;
+    }
+    
+    .option-selector {
+        width: 100%;
+        max-width: 90vw;
+        top: 10px;
+        right: 10px;
+        left: 10px;
+    }
+    
+    .hero-video {
+        height: 60vh;
+    }
+    
+    .logo-details h1 {
+        font-size: 2em;
+    }
+    
+    .logo-details h2 {
+        font-size: 1em;
+    }
+    
+    .villa-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .footer-brand h1 {
+        font-size: 1.5em;
+    }
+    
+    .central-logo {
+        padding: 30px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-nav {
+        padding: 10px 0;
+    }
+    
+    .header-nav ul {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .logo-details h1 {
+        font-size: 1.5em;
+        letter-spacing: 0.5px;
+    }
+    
+    .villa-info h3 {
+        font-size: 1.2em;
+    }
+    
+    .action-button {
+        padding: 6px 10px;
+        font-size: 0.8em;
+    }
+    
+    .footer-brand h1 {
+        font-size: 1.2em;
+    }
+}
